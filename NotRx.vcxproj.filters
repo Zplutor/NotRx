@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{68a4bd5f-fb0a-4806-8170-77eff579ee39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rx">
+      <UniqueIdentifier>{860d4fa0-9109-4d59-9c9e-2a84c649144e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rx\internal">
+      <UniqueIdentifier>{fdbd3caf-7a41-4c5a-ad7e-f234e3df015c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\rx\error.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\observable.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\observer.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\observer_functions.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\subject.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\subscription.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\empty_subscription.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\general_observable.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\general_observer.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\general_subscription.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\last_operator.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\map_operator.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\observable.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\observer.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\range_source.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\subject.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\subscription.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\subscription_table.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\rx\observable.cpp">
+      <Filter>src\rx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\observable.cpp">
+      <Filter>src\rx\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\subject.cpp">
+      <Filter>src\rx\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\subscription_table.cpp">
+      <Filter>src\rx\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+</Project>
