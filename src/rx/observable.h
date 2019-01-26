@@ -11,34 +11,34 @@ namespace rx {
 template<typename T>
 class Observable {
 public:
-    explicit Observable(std::shared_ptr<internal::Observable> impl) : impl_(std::move(impl)) {
+    explicit Observable(std::shared_ptr<internal::Observable> handle) : handle_(std::move(handle)) {
     
     }
 
     Subscription Subscribe(OnNext<T> on_next, OnError on_error = nullptr, OnCompleted on_completed = nullptr) {
-        auto subscription = impl_->Subscribe([on_next](const std::any& value) {
+        auto subscription = handle_->Subscribe([on_next](const std::any& value) {
             on_next(std::any_cast<T>(value));
         }, on_error, on_completed);
         return Subscription(subscription);
     }
 
     Subscription Subscribe(const Observer<T>& observer) {
-        return Subscription(impl_->Subscribe(observer.GetHandle()));
+        return Subscription(handle_->Subscribe(observer.GetHandle()));
     }
     
     Observable<T> Last() {
-        return Observable<T>(impl_->Last());
+        return Observable<T>(handle_->Last());
     }
 
     template<typename K>
     Observable<K> Map(std::function<K(const T&)> map_operator) {
-        return Observable<K>(impl_->Map([map_operator](const std::any& value) {
+        return Observable<K>(handle_->Map([map_operator](const std::any& value) {
             return map_operator(std::any_cast<T>(value));
         }));
     }
 
 private:
-    std::shared_ptr<internal::Observable> impl_;
+    std::shared_ptr<internal::Observable> handle_;
 };
 
 

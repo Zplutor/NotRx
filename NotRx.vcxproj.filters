@@ -10,6 +10,9 @@
     <Filter Include="src\rx\internal">
       <UniqueIdentifier>{fdbd3caf-7a41-4c5a-ad7e-f234e3df015c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\rx\internal\scheduler">
+      <UniqueIdentifier>{6a691010-89af-4030-b15f-df0f27c6e187}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\rx\error.h">
@@ -66,6 +69,15 @@
     <ClInclude Include="src\rx\internal\subscription_table.h">
       <Filter>src\rx\internal</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\scheduler.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\scheduler\scheduler_manager.h">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\scheduler\new_thread_scheduler.h">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\observable.cpp">
@@ -81,5 +93,14 @@
       <Filter>src\rx\internal</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\rx\scheduler.cpp">
+      <Filter>src\rx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\scheduler\scheduler_manager.cpp">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\scheduler\new_thread_scheduler.cpp">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

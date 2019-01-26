@@ -29,21 +29,27 @@
     <ClInclude Include="src\rx\internal\observable.h" />
     <ClInclude Include="src\rx\internal\observer.h" />
     <ClInclude Include="src\rx\internal\range_source.h" />
+    <ClInclude Include="src\rx\internal\scheduler\new_thread_scheduler.h" />
+    <ClInclude Include="src\rx\internal\scheduler\scheduler_manager.h" />
     <ClInclude Include="src\rx\internal\subject.h" />
     <ClInclude Include="src\rx\internal\subscription.h" />
     <ClInclude Include="src\rx\internal\subscription_table.h" />
     <ClInclude Include="src\rx\observable.h" />
     <ClInclude Include="src\rx\observer.h" />
     <ClInclude Include="src\rx\observer_functions.h" />
+    <ClInclude Include="src\rx\scheduler.h" />
     <ClInclude Include="src\rx\subject.h" />
     <ClInclude Include="src\rx\subscription.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\rx\internal\observable.cpp" />
+    <ClCompile Include="src\rx\internal\scheduler\new_thread_scheduler.cpp" />
+    <ClCompile Include="src\rx\internal\scheduler\scheduler_manager.cpp" />
     <ClCompile Include="src\rx\internal\subject.cpp" />
     <ClCompile Include="src\rx\internal\subscription_table.cpp" />
     <ClCompile Include="src\rx\observable.cpp" />
+    <ClCompile Include="src\rx\scheduler.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
