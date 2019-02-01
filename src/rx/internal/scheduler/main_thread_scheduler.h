@@ -1,17 +1,14 @@
 #pragma once
 
-#include <mutex>
-#include <set>
 #include "rx/internal/thread/thread_manager.h"
 #include "rx/scheduler.h"
-#include "rx/run_loop_thread.h"
 
 namespace rx {
 namespace internal {
 
-class NewThreadScheduler : public Scheduler {
+class MainThreadScheduler : public Scheduler {
 public:
-    NewThreadScheduler(ThreadManager& thread_manager);
+    MainThreadScheduler(ThreadManager&);
 
     void Schedule(Work work) override;
 

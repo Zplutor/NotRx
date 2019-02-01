@@ -8,6 +8,8 @@
 
 namespace rx {
 
+class Scheduler;
+
 template<typename T>
 class Observable {
 public:
@@ -26,6 +28,10 @@ public:
         return Subscription(handle_->Subscribe(observer.GetHandle()));
     }
     
+    Observable<T> ObserveOn(std::shared_ptr<Scheduler> scheduler) {
+        return Observable<T>(handle_->ObserveOn(scheduler));
+    }
+
     Observable<T> Last() {
         return Observable<T>(handle_->Last());
     }

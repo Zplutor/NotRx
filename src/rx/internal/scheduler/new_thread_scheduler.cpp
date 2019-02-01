@@ -1,13 +1,16 @@
 #include "rx/internal/scheduler/new_thread_scheduler.h"
-#include <thread>
 
 namespace rx {
 namespace internal {
 
-void NewThreadScheduler::Schedule(Work work) {
+NewThreadScheduler::NewThreadScheduler(ThreadManager& thread_manager) : 
+    thread_manager_(thread_manager) {
 
-    std::thread new_thread(work);
-    new_thread.detach();
+}
+
+
+void NewThreadScheduler::Schedule(Work work) {
+    thread_manager_.CreateThread(std::move(work));
 }
 
 }

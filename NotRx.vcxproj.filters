@@ -13,6 +13,12 @@
     <Filter Include="src\rx\internal\scheduler">
       <UniqueIdentifier>{6a691010-89af-4030-b15f-df0f27c6e187}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\rx\internal\operator">
+      <UniqueIdentifier>{7fdc0663-717a-41db-8b6f-7f1bfd3a866c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rx\internal\thread">
+      <UniqueIdentifier>{494fa7ba-6fa9-4526-9146-687947929c6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\rx\error.h">
@@ -78,6 +84,30 @@
     <ClInclude Include="src\rx\internal\scheduler\new_thread_scheduler.h">
       <Filter>src\rx\internal\scheduler</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\internal\operator\observe_on_operator.h">
+      <Filter>src\rx\internal\operator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\thread\thread_manager.h">
+      <Filter>src\rx\internal\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\work.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\thread\main_thread.h">
+      <Filter>src\rx\internal\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\scheduler\main_thread_scheduler.h">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\run_loop_thread.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\thread\thread.h">
+      <Filter>src\rx\internal\thread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\thread\general_run_loop_thread.h">
+      <Filter>src\rx\internal\thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\observable.cpp">
@@ -101,6 +131,24 @@
     </ClCompile>
     <ClCompile Include="src\rx\internal\scheduler\new_thread_scheduler.cpp">
       <Filter>src\rx\internal\scheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\thread\thread_manager.cpp">
+      <Filter>src\rx\internal\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\thread\main_thread.cpp">
+      <Filter>src\rx\internal\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\scheduler\main_thread_scheduler.cpp">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\run_loop_thread.cpp">
+      <Filter>src\rx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\thread\thread.cpp">
+      <Filter>src\rx\internal\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\thread\general_run_loop_thread.cpp">
+      <Filter>src\rx\internal\thread</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

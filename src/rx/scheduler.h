@@ -2,15 +2,16 @@
 
 #include <functional>
 #include <memory>
+#include "rx/work.h"
 
 namespace rx {
 
 class Scheduler {
 public:
-    using Work = std::function<void()>;
-
-public:
+    static std::shared_ptr<Scheduler> MainThread();
     static std::shared_ptr<Scheduler> NewThread();
+
+    static void RunMainThread();
 
 public:
     Scheduler() = default;
