@@ -17,7 +17,7 @@ public:
             observer->OnNext(value);
         }
         observer->OnCompleted();
-        return std::make_shared<EmptySubscription>();
+        return EmptySubscription::Instance();
     }
 
 private:

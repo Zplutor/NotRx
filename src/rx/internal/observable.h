@@ -20,7 +20,6 @@ public:
     Observable(const Observable&) = delete;
     Observable& operator=(const Observable&) = delete;
 
-    std::shared_ptr<Subscription> Subscribe(OnNext<std::any> on_next, OnError on_error, OnCompleted on_completed);
     virtual std::shared_ptr<Subscription> Subscribe(const std::shared_ptr<Observer>& observer) = 0;
 
     std::shared_ptr<Observable> ObserveOn(const std::shared_ptr<Scheduler>& scheduler);

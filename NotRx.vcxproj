@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClInclude Include="src\rx\error.h" />
     <ClInclude Include="src\rx\internal\empty_subscription.h" />
-    <ClInclude Include="src\rx\internal\general_observable.h" />
     <ClInclude Include="src\rx\internal\general_observer.h" />
     <ClInclude Include="src\rx\internal\general_subscription.h" />
     <ClInclude Include="src\rx\internal\last_operator.h" />
@@ -52,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\rx\internal\empty_subscription.cpp" />
     <ClCompile Include="src\rx\internal\observable.cpp" />
+    <ClCompile Include="src\rx\internal\observer.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\main_thread_scheduler.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\new_thread_scheduler.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\scheduler_manager.cpp" />

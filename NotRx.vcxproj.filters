@@ -42,9 +42,6 @@
     <ClInclude Include="src\rx\internal\empty_subscription.h">
       <Filter>src\rx\internal</Filter>
     </ClInclude>
-    <ClInclude Include="src\rx\internal\general_observable.h">
-      <Filter>src\rx\internal</Filter>
-    </ClInclude>
     <ClInclude Include="src\rx\internal\general_observer.h">
       <Filter>src\rx\internal</Filter>
     </ClInclude>
@@ -155,6 +152,12 @@
     </ClCompile>
     <ClCompile Include="src\rx\internal\scheduler\thread_pool_scheduler.cpp">
       <Filter>src\rx\internal\scheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\observer.cpp">
+      <Filter>src\rx\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\empty_subscription.cpp">
+      <Filter>src\rx\internal</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

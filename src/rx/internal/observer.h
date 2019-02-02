@@ -1,12 +1,17 @@
 #pragma once
 
 #include <any>
+#include <memory>
 #include "rx/error.h"
+#include "rx/observer_functions.h"
 
 namespace rx {
 namespace internal {
 
 class Observer {
+public:
+    static std::shared_ptr<Observer> Create(rx::OnNext<std::any> on_next, rx::OnError on_error, rx::OnCompleted on_completed);
+
 public:
     Observer() = default;
     virtual ~Observer() = default;

@@ -10,9 +10,9 @@ namespace internal {
 class GeneralObserver : public Observer {
 public:
     GeneralObserver(rx::OnNext<std::any> on_next, rx::OnError on_error, rx::OnCompleted on_completed) :
-        on_next_(on_next),
-        on_error_(on_error),
-        on_completed_(on_completed) {
+        on_next_(std::move(on_next)),
+        on_error_(std::move(on_error)),
+        on_completed_(std::move(on_completed)) {
 
     }
 
