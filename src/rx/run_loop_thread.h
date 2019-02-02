@@ -1,5 +1,6 @@
 #pragma once
 
+#include <thread>
 #include <functional>
 #include "rx/work.h"
 
@@ -17,6 +18,7 @@ public:
     RunLoopThread(const RunLoopThread&) = delete;
     RunLoopThread& operator=(const RunLoopThread&) = delete;
 
+    virtual std::thread::id GetId() = 0;
     virtual void DoWork(Work work) = 0;
 };
 

@@ -10,6 +10,7 @@ class Scheduler {
 public:
     static std::shared_ptr<Scheduler> MainThread();
     static std::shared_ptr<Scheduler> NewThread();
+    static std::shared_ptr<Scheduler> ThreadPool();
 
     static void RunMainThread();
 

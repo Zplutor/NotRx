@@ -18,6 +18,7 @@ public:
 
     std::shared_ptr<Scheduler> GetMainThreadScheduler();
     std::shared_ptr<Scheduler> GetNewThreadScheduler();
+    std::shared_ptr<Scheduler> GetThreadPoolScheduler();
 
 private:
     ThreadManager thread_manager_;
@@ -27,6 +28,9 @@ private:
 
     std::shared_ptr<Scheduler> new_thread_scheduler_;
     std::once_flag new_thread_scheduler_once_flag_;
+
+    std::shared_ptr<Scheduler> thread_pool_scheduler_;
+    std::once_flag thread_pool_scheduler_once_flag_;
 };
 
 }

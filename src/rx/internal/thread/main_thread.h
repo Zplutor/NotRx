@@ -11,6 +11,7 @@ class MainThread : public RunLoopThread {
 public:
     void Run();
 
+    std::thread::id GetId() override;
     void DoWork(std::function<void()> work) override;
 
 private:

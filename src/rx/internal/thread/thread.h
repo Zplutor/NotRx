@@ -11,6 +11,10 @@ class Thread {
 public:
     Thread(Work work, std::function<void(Thread*)> end);
 
+    std::thread::id GetId() {
+        return thread_.get_id();
+    }
+
     bool IsJoinable() {
         return thread_.joinable();
     }

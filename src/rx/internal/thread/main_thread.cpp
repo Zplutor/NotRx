@@ -23,6 +23,11 @@ void MainThread::Run() {
 }
 
 
+std::thread::id MainThread::GetId() {
+    return {};
+}
+
+
 void MainThread::DoWork(std::function<void()> work) {
 
     std::scoped_lock<std::mutex> lock(lock_);

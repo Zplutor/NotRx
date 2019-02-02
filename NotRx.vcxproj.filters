@@ -108,6 +108,9 @@
     <ClInclude Include="src\rx\internal\thread\general_run_loop_thread.h">
       <Filter>src\rx\internal\thread</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\internal\scheduler\thread_pool_scheduler.h">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\observable.cpp">
@@ -149,6 +152,9 @@
     </ClCompile>
     <ClCompile Include="src\rx\internal\thread\general_run_loop_thread.cpp">
       <Filter>src\rx\internal\thread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\scheduler\thread_pool_scheduler.cpp">
+      <Filter>src\rx\internal\scheduler</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

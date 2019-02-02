@@ -17,6 +17,11 @@ GeneralRunLoopThread::~GeneralRunLoopThread() {
 }
 
 
+std::thread::id GeneralRunLoopThread::GetId() {
+    return thread_->GetId();
+}
+
+
 void GeneralRunLoopThread::DoWork(Work work) {
 
     std::scoped_lock<std::mutex> lock(state_->works_lock);

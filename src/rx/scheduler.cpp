@@ -13,6 +13,11 @@ std::shared_ptr<Scheduler> Scheduler::NewThread() {
 }
 
 
+std::shared_ptr<Scheduler> Scheduler::ThreadPool() {
+    return internal::SchedulerManager::Instance().GetThreadPoolScheduler();
+}
+
+
 void Scheduler::RunMainThread() {
     internal::SchedulerManager::Instance().GetThreadManager().GetMainThread()->Run();
 }

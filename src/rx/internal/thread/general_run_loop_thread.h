@@ -17,6 +17,7 @@ public:
     GeneralRunLoopThread(std::function<std::shared_ptr<Thread>(Work)> create);
     ~GeneralRunLoopThread();
 
+    std::thread::id GetId() override;
     void DoWork(Work work) override;
 
 private:

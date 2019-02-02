@@ -33,6 +33,7 @@
     <ClInclude Include="src\rx\internal\scheduler\main_thread_scheduler.h" />
     <ClInclude Include="src\rx\internal\scheduler\new_thread_scheduler.h" />
     <ClInclude Include="src\rx\internal\scheduler\scheduler_manager.h" />
+    <ClInclude Include="src\rx\internal\scheduler\thread_pool_scheduler.h" />
     <ClInclude Include="src\rx\internal\subject.h" />
     <ClInclude Include="src\rx\internal\subscription.h" />
     <ClInclude Include="src\rx\internal\subscription_table.h" />
@@ -55,6 +56,7 @@
     <ClCompile Include="src\rx\internal\scheduler\main_thread_scheduler.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\new_thread_scheduler.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\scheduler_manager.cpp" />
+    <ClCompile Include="src\rx\internal\scheduler\thread_pool_scheduler.cpp" />
     <ClCompile Include="src\rx\internal\subject.cpp" />
     <ClCompile Include="src\rx\internal\subscription_table.cpp" />
     <ClCompile Include="src\rx\internal\thread\main_thread.cpp" />
