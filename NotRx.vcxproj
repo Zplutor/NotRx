@@ -23,11 +23,11 @@
     <ClInclude Include="src\rx\internal\empty_subscription.h" />
     <ClInclude Include="src\rx\internal\general_observer.h" />
     <ClInclude Include="src\rx\internal\general_subscription.h" />
-    <ClInclude Include="src\rx\internal\last_operator.h" />
-    <ClInclude Include="src\rx\internal\map_operator.h" />
     <ClInclude Include="src\rx\internal\observable.h" />
     <ClInclude Include="src\rx\internal\observer.h" />
     <ClInclude Include="src\rx\internal\operator\concat_map_operator.h" />
+    <ClInclude Include="src\rx\internal\operator\last_operator.h" />
+    <ClInclude Include="src\rx\internal\operator\map_operator.h" />
     <ClInclude Include="src\rx\internal\operator\observe_on_operator.h" />
     <ClInclude Include="src\rx\internal\range_source.h" />
     <ClInclude Include="src\rx\internal\scheduler\main_thread_scheduler.h" />

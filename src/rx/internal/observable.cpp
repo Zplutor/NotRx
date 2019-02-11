@@ -1,7 +1,7 @@
 #include "rx/internal/observable.h"
-#include "rx/internal/last_operator.h"
-#include "rx/internal/map_operator.h"
 #include "rx/internal/operator/concat_map_operator.h"
+#include "rx/internal/operator/last_operator.h"
+#include "rx/internal/operator/map_operator.h"
 #include "rx/internal/operator/observe_on_operator.h"
 
 namespace rx {
