@@ -26,6 +26,7 @@ public:
 
     std::shared_ptr<Observable> Last();
     std::shared_ptr<Observable> Map(std::function<std::any(const std::any&)> map_operator);
+    std::shared_ptr<Observable> ConcatMap(std::function<std::shared_ptr<Observable>(const std::any&)> concat_map_operator);
 };
 
 }

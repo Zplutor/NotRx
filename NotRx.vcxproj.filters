@@ -108,6 +108,9 @@
     <ClInclude Include="src\rx\internal\scheduler\thread_pool_scheduler.h">
       <Filter>src\rx\internal\scheduler</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\internal\operator\concat_map_operator.h">
+      <Filter>src\rx\internal\operator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\observable.cpp">

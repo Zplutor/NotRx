@@ -38,6 +38,17 @@ public:
         }));
     }
 
+    template<typename K>
+    Observable<K> ConcatMap(std::function<Observable<K>(const T&)> concat_map_operator) {
+        return Observable<K>(handle_->ConcatMap([concat_map_operator](const std::any& value) {
+            return concat_map_operator(std::any_cast<T>(value)).GetHandle();
+        }));
+    }
+
+    const std::shared_ptr<internal::Observable>& GetHandle() const {
+        return handle_;
+    }
+
 private:
     std::shared_ptr<internal::Observable> handle_;
 };
