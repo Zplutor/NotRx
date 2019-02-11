@@ -7,17 +7,24 @@ namespace rx {
 
 class Subscription {
 public:
+    static Subscription Empty();
+
+public:
     explicit Subscription(const std::shared_ptr<internal::Subscription>& impl) :
-        impl_(impl) {
+        handle_(impl) {
     
     }
 
     void Unsubscribe() {
-        impl_->Unsubscribe();
+        handle_->Unsubscribe();
+    }
+
+    const std::shared_ptr<internal::Subscription>& GetHandle() const {
+        return handle_;
     }
 
 private:
-    std::shared_ptr<internal::Subscription> impl_;
+    std::shared_ptr<internal::Subscription> handle_;
 };
 
 }

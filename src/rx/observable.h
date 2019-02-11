@@ -53,11 +53,4 @@ private:
     std::shared_ptr<internal::Observable> handle_;
 };
 
-
-template<>
-class Observable<void> {
-public:
-    static Observable<int> Range(int from, int to);
-};
-
 }

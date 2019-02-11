@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\rx\creation.h" />
     <ClInclude Include="src\rx\error.h" />
+    <ClInclude Include="src\rx\internal\creator\customized_creator.h" />
+    <ClInclude Include="src\rx\internal\creator\just_creator.h" />
+    <ClInclude Include="src\rx\internal\creator\range_creator.h" />
     <ClInclude Include="src\rx\internal\empty_subscription.h" />
     <ClInclude Include="src\rx\internal\general_observer.h" />
     <ClInclude Include="src\rx\internal\general_subscription.h" />
@@ -29,7 +33,6 @@
     <ClInclude Include="src\rx\internal\operator\last_operator.h" />
     <ClInclude Include="src\rx\internal\operator\map_operator.h" />
     <ClInclude Include="src\rx\internal\operator\observe_on_operator.h" />
-    <ClInclude Include="src\rx\internal\range_source.h" />
     <ClInclude Include="src\rx\internal\scheduler\main_thread_scheduler.h" />
     <ClInclude Include="src\rx\internal\scheduler\new_thread_scheduler.h" />
     <ClInclude Include="src\rx\internal\scheduler\scheduler_manager.h" />
@@ -52,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\rx\creation.cpp" />
+    <ClCompile Include="src\rx\internal\creator\customized_creator.cpp" />
+    <ClCompile Include="src\rx\internal\creator\just_creator.cpp" />
     <ClCompile Include="src\rx\internal\empty_subscription.cpp" />
     <ClCompile Include="src\rx\internal\observable.cpp" />
     <ClCompile Include="src\rx\internal\observer.cpp" />
@@ -65,9 +71,9 @@
     <ClCompile Include="src\rx\internal\thread\general_run_loop_thread.cpp" />
     <ClCompile Include="src\rx\internal\thread\thread_manager.cpp" />
     <ClCompile Include="src\rx\internal\thread\thread.cpp" />
-    <ClCompile Include="src\rx\observable.cpp" />
     <ClCompile Include="src\rx\scheduler.cpp" />
     <ClCompile Include="src\rx\run_loop_thread.cpp" />
+    <ClCompile Include="src\rx\subscription.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

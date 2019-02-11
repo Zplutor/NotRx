@@ -6,14 +6,13 @@
 namespace rx {
 namespace internal {
 
-class RangeSource : public Observable {
+class RangeCreator : public Observable {
 public:
-    RangeSource(int from, int to) : from_(from), to_(to) {
-
-    }
+    RangeCreator(int start, int length, int step) : start_(start), length_(length), step_(step) { }
 
     std::shared_ptr<Subscription> Subscribe(const std::shared_ptr<Observer>& observer) override {
-        for (int value = from_; value <= to_; ++value) {
+        int end = start_ + length_;
+        for (int value = start_; value < end; value += step_) {
             observer->OnNext(value);
         }
         observer->OnCompleted();
@@ -21,8 +20,9 @@ public:
     }
 
 private:
-    int from_{};
-    int to_{};
+    int start_{};
+    int length_{};
+    int step_{};
 };
 
 }
