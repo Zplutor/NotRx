@@ -123,6 +123,9 @@
     <ClInclude Include="src\rx\internal\creator\just_creator.h">
       <Filter>src\rx\internal\creator</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\internal\operator\subscribe_on_operator.h">
+      <Filter>src\rx\internal\operator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\internal\observable.cpp">

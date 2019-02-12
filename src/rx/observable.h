@@ -23,6 +23,10 @@ public:
         return Subscription(handle_->Subscribe(observer.GetHandle()));
     }
     
+    Observable<T> SubscribeOn(const std::shared_ptr<Scheduler>& scheduler) {
+        return Observable<T>(handle_->SubscribeOn(scheduler));
+    }
+
     Observable<T> ObserveOn(const std::shared_ptr<Scheduler>& scheduler) {
         return Observable<T>(handle_->ObserveOn(scheduler));
     }

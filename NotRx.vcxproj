@@ -33,6 +33,7 @@
     <ClInclude Include="src\rx\internal\operator\last_operator.h" />
     <ClInclude Include="src\rx\internal\operator\map_operator.h" />
     <ClInclude Include="src\rx\internal\operator\observe_on_operator.h" />
+    <ClInclude Include="src\rx\internal\operator\subscribe_on_operator.h" />
     <ClInclude Include="src\rx\internal\scheduler\main_thread_scheduler.h" />
     <ClInclude Include="src\rx\internal\scheduler\new_thread_scheduler.h" />
     <ClInclude Include="src\rx\internal\scheduler\scheduler_manager.h" />

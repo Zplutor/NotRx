@@ -3,9 +3,15 @@
 #include "rx/internal/operator/last_operator.h"
 #include "rx/internal/operator/map_operator.h"
 #include "rx/internal/operator/observe_on_operator.h"
+#include "rx/internal/operator/subscribe_on_operator.h"
 
 namespace rx {
 namespace internal {
+
+std::shared_ptr<Observable> Observable::SubscribeOn(const std::shared_ptr<Scheduler>& scheduler) {
+    return std::make_shared<SubscribeOnOperator>(shared_from_this(), scheduler);
+}
+
 
 std::shared_ptr<Observable> Observable::ObserveOn(const std::shared_ptr<Scheduler>& scheduler) {
     return std::make_shared<ObserveOnOperator>(shared_from_this(), scheduler);

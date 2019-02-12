@@ -22,6 +22,7 @@ public:
 
     virtual std::shared_ptr<Subscription> Subscribe(const std::shared_ptr<Observer>& observer) = 0;
 
+    std::shared_ptr<Observable> SubscribeOn(const std::shared_ptr<Scheduler>& scheduler);
     std::shared_ptr<Observable> ObserveOn(const std::shared_ptr<Scheduler>& scheduler);
 
     std::shared_ptr<Observable> Last();
