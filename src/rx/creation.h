@@ -4,6 +4,7 @@
 #include "rx/observer.h"
 #include "rx/internal/creator/customized_creator.h"
 #include "rx/internal/creator/just_creator.h"
+#include "rx/internal/creator/merge_creator.h"
 
 namespace rx {
 
@@ -22,6 +23,16 @@ Observable<T> Create(std::function<Subscription(Observer<T> observer)> creator) 
 template<typename T>
 Observable<T> Just(const T& value) {
     return Observable<T>(std::make_shared<internal::JustCreator>(value));
+}
+
+
+template<typename T>
+Observable<T> Merge(const std::vector<Observable<T>>& observables) {
+    std::vector<std::shared_ptr<internal::Observable>> handles;
+    for (const auto& each_observable : observables) {
+        handles.push_back(each_observable.GetHandle());
+    }
+    return Observable<T>(std::make_shared<internal::MergeCreator>(handles));
 }
 
 }

@@ -23,6 +23,7 @@
     <ClInclude Include="src\rx\error.h" />
     <ClInclude Include="src\rx\internal\creator\customized_creator.h" />
     <ClInclude Include="src\rx\internal\creator\just_creator.h" />
+    <ClInclude Include="src\rx\internal\creator\merge_creator.h" />
     <ClInclude Include="src\rx\internal\creator\range_creator.h" />
     <ClInclude Include="src\rx\internal\empty_subscription.h" />
     <ClInclude Include="src\rx\internal\general_observer.h" />
@@ -59,6 +60,7 @@
     <ClCompile Include="src\rx\creation.cpp" />
     <ClCompile Include="src\rx\internal\creator\customized_creator.cpp" />
     <ClCompile Include="src\rx\internal\creator\just_creator.cpp" />
+    <ClCompile Include="src\rx\internal\creator\merge_creator.cpp" />
     <ClCompile Include="src\rx\internal\empty_subscription.cpp" />
     <ClCompile Include="src\rx\internal\observable.cpp" />
     <ClCompile Include="src\rx\internal\observer.cpp" />

@@ -126,6 +126,9 @@
     <ClInclude Include="src\rx\internal\subscription_bag.h">
       <Filter>src\rx\internal</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\internal\creator\merge_creator.h">
+      <Filter>src\rx\internal\creator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\internal\observable.cpp">
@@ -185,6 +188,9 @@
     </ClCompile>
     <ClCompile Include="src\rx\subscription_bag.cpp">
       <Filter>src\rx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\creator\merge_creator.cpp">
+      <Filter>src\rx\internal\creator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
