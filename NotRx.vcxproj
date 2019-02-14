@@ -26,7 +26,6 @@
     <ClInclude Include="src\rx\internal\creator\range_creator.h" />
     <ClInclude Include="src\rx\internal\empty_subscription.h" />
     <ClInclude Include="src\rx\internal\general_observer.h" />
-    <ClInclude Include="src\rx\internal\general_subscription.h" />
     <ClInclude Include="src\rx\internal\observable.h" />
     <ClInclude Include="src\rx\internal\observer.h" />
     <ClInclude Include="src\rx\internal\operator\concat_map_operator.h" />
@@ -40,7 +39,7 @@
     <ClInclude Include="src\rx\internal\scheduler\thread_pool_scheduler.h" />
     <ClInclude Include="src\rx\internal\subject.h" />
     <ClInclude Include="src\rx\internal\subscription.h" />
-    <ClInclude Include="src\rx\internal\subscription_table.h" />
+    <ClInclude Include="src\rx\internal\subscription_bag.h" />
     <ClInclude Include="src\rx\internal\thread\main_thread.h" />
     <ClInclude Include="src\rx\internal\thread\general_run_loop_thread.h" />
     <ClInclude Include="src\rx\internal\thread\thread.h" />
@@ -52,6 +51,7 @@
     <ClInclude Include="src\rx\subject.h" />
     <ClInclude Include="src\rx\subscription.h" />
     <ClInclude Include="src\rx\run_loop_thread.h" />
+    <ClInclude Include="src\rx\subscription_bag.h" />
     <ClInclude Include="src\rx\work.h" />
   </ItemGroup>
   <ItemGroup>
@@ -67,7 +67,6 @@
     <ClCompile Include="src\rx\internal\scheduler\scheduler_manager.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\thread_pool_scheduler.cpp" />
     <ClCompile Include="src\rx\internal\subject.cpp" />
-    <ClCompile Include="src\rx\internal\subscription_table.cpp" />
     <ClCompile Include="src\rx\internal\thread\main_thread.cpp" />
     <ClCompile Include="src\rx\internal\thread\general_run_loop_thread.cpp" />
     <ClCompile Include="src\rx\internal\thread\thread_manager.cpp" />
@@ -75,6 +74,7 @@
     <ClCompile Include="src\rx\scheduler.cpp" />
     <ClCompile Include="src\rx\run_loop_thread.cpp" />
     <ClCompile Include="src\rx\subscription.cpp" />
+    <ClCompile Include="src\rx\subscription_bag.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
