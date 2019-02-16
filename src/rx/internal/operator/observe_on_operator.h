@@ -2,6 +2,8 @@
 
 #include <atomic>
 #include "rx/internal/observable.h"
+#include "rx/internal/subscription_core.h"
+#include "rx/internal/subscription_creation.h"
 #include "rx/scheduler.h"
 
 namespace rx {
@@ -18,13 +20,14 @@ public:
     std::shared_ptr<Subscription> Subscribe(const std::shared_ptr<Observer>& observer) override {
         auto observe_on_observer = std::make_shared<ObserveOnObserver>(observer, scheduler_);
         auto source_subscription = source_->Subscribe(observe_on_observer);
-        return std::make_shared<ObserveOnSubscription>(observe_on_observer, source_subscription);
+        observe_on_observer->AttachSourceSubscription(source_subscription);
+        return MakeSubscription(observe_on_observer);
     }
 
 private:
-    class ObserveOnObserver : public Observer, public std::enable_shared_from_this<ObserveOnObserver> {
+    class ObserveOnObserver : public Observer, public SubscriptionCore, public std::enable_shared_from_this<ObserveOnObserver> {
     public:
-        ObserveOnObserver(std::shared_ptr<Observer> next_observer, std::shared_ptr<Scheduler> scheduler) : 
+        ObserveOnObserver(std::shared_ptr<Observer> next_observer, std::shared_ptr<Scheduler> scheduler) :
             next_observer_(std::move(next_observer)),
             scheduler_(std::move(scheduler)) { }
 
@@ -40,8 +43,14 @@ private:
             scheduler_->Schedule(std::bind(&ObserveOnObserver::OnCompletedOnScheduler, shared_from_this()));
         }
 
-        void Unsubscribe() {
+        void AttachSourceSubscription(std::shared_ptr<Subscription> source_subscription) {
+            source_subscription_ = std::move(source_subscription);
+        }
+
+    protected:
+        void OnUnsubscribe() override {
             is_subscribed_.store(false);
+            source_subscription_->Unsubscribe();
         }
 
     private:
@@ -54,34 +63,22 @@ private:
         void OnErrorOnScheduler(const Error& error) {
             if (is_subscribed_.load()) {
                 next_observer_->OnError(error);
+                FinishSubscription();
             }
         }
 
         void OnCompletedOnScheduler() {
             if (is_subscribed_.load()) {
                 next_observer_->OnCompleted();
+                FinishSubscription();
             }
         }
 
     private:
+        std::shared_ptr<Subscription> source_subscription_;
         std::shared_ptr<Observer> next_observer_;
         std::shared_ptr<Scheduler> scheduler_;
         std::atomic<bool> is_subscribed_{ true };
-    };
-
-    class ObserveOnSubscription : public Subscription {
-    public:
-        ObserveOnSubscription(std::shared_ptr<ObserveOnObserver> observer, std::shared_ptr<Subscription> source_subscription) :
-            observer_(std::move(observer)), source_subscription_(std::move(source_subscription)) { }
-
-        void Unsubscribe() override {
-            source_subscription_->Unsubscribe();
-            observer_->Unsubscribe();
-        }
-
-    private:
-        std::shared_ptr<ObserveOnObserver> observer_;
-        std::shared_ptr<Subscription> source_subscription_;
     };
 
 private:

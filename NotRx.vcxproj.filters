@@ -42,9 +42,6 @@
     <ClInclude Include="src\rx\subscription.h">
       <Filter>src\rx</Filter>
     </ClInclude>
-    <ClInclude Include="src\rx\internal\empty_subscription.h">
-      <Filter>src\rx\internal</Filter>
-    </ClInclude>
     <ClInclude Include="src\rx\internal\general_observer.h">
       <Filter>src\rx\internal</Filter>
     </ClInclude>
@@ -120,14 +117,26 @@
     <ClInclude Include="src\rx\internal\operator\subscribe_on_operator.h">
       <Filter>src\rx\internal\operator</Filter>
     </ClInclude>
-    <ClInclude Include="src\rx\subscription_bag.h">
-      <Filter>src\rx</Filter>
-    </ClInclude>
-    <ClInclude Include="src\rx\internal\subscription_bag.h">
-      <Filter>src\rx\internal</Filter>
-    </ClInclude>
     <ClInclude Include="src\rx\internal\creator\merge_creator.h">
       <Filter>src\rx\internal\creator</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\base_subscription.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\subscription_creation.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\subscription_core.h">
+      <Filter>src\rx\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\subscription_host.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\subscription_container.h">
+      <Filter>src\rx</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\subscription_container.h">
+      <Filter>src\rx\internal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -171,9 +180,6 @@
     <ClCompile Include="src\rx\internal\observer.cpp">
       <Filter>src\rx\internal</Filter>
     </ClCompile>
-    <ClCompile Include="src\rx\internal\empty_subscription.cpp">
-      <Filter>src\rx\internal</Filter>
-    </ClCompile>
     <ClCompile Include="src\rx\creation.cpp">
       <Filter>src\rx</Filter>
     </ClCompile>
@@ -186,11 +192,17 @@
     <ClCompile Include="src\rx\internal\creator\just_creator.cpp">
       <Filter>src\rx\internal\creator</Filter>
     </ClCompile>
-    <ClCompile Include="src\rx\subscription_bag.cpp">
-      <Filter>src\rx</Filter>
-    </ClCompile>
     <ClCompile Include="src\rx\internal\creator\merge_creator.cpp">
       <Filter>src\rx\internal\creator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\subscription_creation.cpp">
+      <Filter>src\rx\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\subscription_core.cpp">
+      <Filter>src\rx\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\subscription_container.cpp">
+      <Filter>src\rx</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

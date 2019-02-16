@@ -1,7 +1,7 @@
 #pragma once
 
-#include "rx/internal/empty_subscription.h"
 #include "rx/internal/observable.h"
+#include "rx/internal/subscription_creation.h"
 
 namespace rx {
 namespace internal {
@@ -16,7 +16,7 @@ public:
             observer->OnNext(value);
         }
         observer->OnCompleted();
-        return EmptySubscription::Instance();
+        return GetEmptySubscription();
     }
 
 private:

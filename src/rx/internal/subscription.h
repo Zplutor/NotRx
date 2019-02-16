@@ -1,7 +1,11 @@
 #pragma once
 
+#include <memory>
+
 namespace rx {
 namespace internal {
+
+class SubscriptionCore;
 
 class Subscription {
 public:
@@ -12,6 +16,7 @@ public:
     Subscription& operator=(const Subscription&) = delete;
 
     virtual void Unsubscribe() = 0;
+    virtual std::shared_ptr<SubscriptionCore> GetCore() = 0;
 };
 
 }

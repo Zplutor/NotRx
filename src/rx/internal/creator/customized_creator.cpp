@@ -1,5 +1,5 @@
 #include "rx/internal/creator/customized_creator.h"
-#include "rx/internal/empty_subscription.h"
+#include "rx/internal/subscription_creation.h"
 
 namespace rx {
 namespace internal {
@@ -13,7 +13,7 @@ std::shared_ptr<Subscription> CustomizedCreator::Subscribe(const std::shared_ptr
     }
     catch (const Error& error) {
         observer->OnError(error);
-        return EmptySubscription::Instance();
+        return GetEmptySubscription();
     }
 }
 

@@ -2,6 +2,8 @@
 
 #include <atomic>
 #include "rx/internal/observable.h"
+#include "rx/internal/subscription_creation.h"
+#include "rx/internal/subscription_core.h"
 #include "rx/scheduler.h"
 
 namespace rx {
@@ -13,24 +15,33 @@ public:
         source_(std::move(source)), scheduler_(std::move(scheduler)) { }
 
     std::shared_ptr<Subscription> Subscribe(const std::shared_ptr<Observer>& observer) override {
-        auto subscription = std::make_shared<SubscribeOnSubscription>(source_, observer, scheduler_);
-        subscription->Subscribe();
-        return subscription;
+        auto subscription_core = std::make_shared<SubscribeOnSubscriptionCore>(source_, observer, scheduler_);
+        subscription_core->Subscribe();
+        return MakeSubscription(subscription_core);
     }
 
 private:
-    class SubscribeOnSubscription : public Subscription, public std::enable_shared_from_this<SubscribeOnSubscription> {
+    class SubscribeOnSubscriptionCore : public SubscriptionCore, public std::enable_shared_from_this<SubscribeOnSubscriptionCore> {
     public:
-        SubscribeOnSubscription(std::shared_ptr<Observable> source, std::shared_ptr<Observer> observer, std::shared_ptr<Scheduler> scheduler) :
+        SubscribeOnSubscriptionCore(std::shared_ptr<Observable> source, std::shared_ptr<Observer> observer, std::shared_ptr<Scheduler> scheduler) :
             source_(std::move(source)), observer_(std::move(observer)), scheduler_(std::move(scheduler)) { }
 
-        void Subscribe() {
-            scheduler_->Schedule(std::bind(&SubscribeOnSubscription::SubscribeOnScheduler, shared_from_this()));
+        ~SubscribeOnSubscriptionCore() {
+            if (source_subscription_ != nullptr) {
+                auto source_core = source_subscription_->GetCore();
+                if (source_core != nullptr) {
+                    source_core->UnregisterFinishCallback(source_subscription_finish_callback_id_);
+                }
+            }
         }
 
-        void Unsubscribe() override {
+        void Subscribe() {
+            scheduler_->Schedule(std::bind(&SubscribeOnSubscriptionCore::SubscribeOnScheduler, shared_from_this()));
+        }
+
+        void OnUnsubscribe() override {
             is_unsubscribed_.store(true);
-            scheduler_->Schedule(std::bind(&SubscribeOnSubscription::UnsubscribeOnScheduler, shared_from_this()));
+            scheduler_->Schedule(std::bind(&SubscribeOnSubscriptionCore::UnsubscribeOnScheduler, shared_from_this()));
         }
 
     private:
@@ -38,7 +49,18 @@ private:
             if (is_unsubscribed_.load()) {
                 return;
             }
+
             source_subscription_ = source_->Subscribe(observer_);
+
+            auto source_core = source_subscription_->GetCore();
+            if (source_core != nullptr) {
+
+                auto weak_pointer = weak_from_this();
+                source_subscription_finish_callback_id_ = source_core->RegisterFinishCallback([weak_pointer](int) {
+                    auto this_core = weak_pointer.lock();
+                    this_core->FinishSubscription();
+                });
+            }
         }
 
         void UnsubscribeOnScheduler() {
@@ -52,6 +74,7 @@ private:
         std::shared_ptr<Observer> observer_;
         std::shared_ptr<Scheduler> scheduler_;
         std::shared_ptr<Subscription> source_subscription_;
+        int source_subscription_finish_callback_id_{};
         std::atomic<bool> is_unsubscribed_{};
     };
 

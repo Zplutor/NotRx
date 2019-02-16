@@ -4,6 +4,8 @@
 #include <map>
 #include "rx/internal/general_observer.h"
 #include "rx/internal/observable.h"
+#include "rx/internal/subscription_core.h"
+#include "rx/internal/subscription_creation.h"
 
 namespace rx {
 namespace internal {
@@ -22,16 +24,21 @@ public:
     std::shared_ptr<Subscription> Subscribe(const std::shared_ptr<Observer>& observer) override {
         auto flat_map_observer = std::make_shared<ConcatMapObserver>(observer, operator_);
         auto source_subscription = source_->Subscribe(flat_map_observer);
-        return std::make_shared<ConcatMapSubscription>(flat_map_observer, source_subscription);
+        flat_map_observer->AttachSourceSubscription(source_subscription);
+        return MakeSubscription(flat_map_observer);
     }
 
 private:
-    class ConcatMapObserver : public Observer {
+    class ConcatMapObserver : public Observer, public SubscriptionCore {
     public:
         ConcatMapObserver(std::shared_ptr<Observer> next_observer, Operator op) : 
             next_observer_(std::move(next_observer)),
             operator_(std::move(op)) {
 
+        }
+
+        void AttachSourceSubscription(std::shared_ptr<Subscription> source_subscription) {
+            source_subscription_ = std::move(source_subscription);
         }
 
         void OnNext(const std::any& value) override {
@@ -42,7 +49,7 @@ private:
             total_subscription_count_++;
 
             auto subscription = observable->Subscribe(std::make_shared<GeneralObserver>([this](const std::any& value) {
-                if (!is_end_) {
+                if (!is_finished_) {
                     next_observer_->OnNext(value);
                 }
             }, 
@@ -69,7 +76,9 @@ private:
             CheckCompleted();
         }
 
-        void Unsubscribe() {
+    protected:
+        void OnUnsubscribe() override {
+            source_subscription_->Unsubscribe();
             for (const auto& each_pair : emitting_subscriptions_) {
                 each_pair.second->Unsubscribe();
             }
@@ -82,50 +91,32 @@ private:
         }
 
         void CheckError(const Error& error) {
-            if (!is_end_) {
-                is_end_ = true;
+            if (!is_finished_) {
+                is_finished_ = true;
                 next_observer_->OnError(error);
+                FinishSubscription();
             }
         }
 
         void CheckCompleted() {
-            if (!is_end_) {
+            if (!is_finished_) {
                 if (is_source_completed_ && ended_subscriptions_.size() == total_subscription_count_) {
-                    is_end_ = true;
+                    is_finished_ = true;
                     next_observer_->OnCompleted();
+                    FinishSubscription();
                 }
             }
         }
 
     private:
+        std::shared_ptr<Subscription> source_subscription_;
         std::shared_ptr<Observer> next_observer_;
         Operator operator_;
         std::size_t total_subscription_count_{};
         std::set<std::size_t> ended_subscriptions_;
         std::map<std::size_t, std::shared_ptr<Subscription>> emitting_subscriptions_;
-        bool is_end_{};
+        bool is_finished_{};
         bool is_source_completed_{};
-    };
-
-    class ConcatMapSubscription : public Subscription {
-    public:
-        ConcatMapSubscription(
-            std::shared_ptr<ConcatMapObserver> observer, 
-            std::shared_ptr<Subscription> source_subscription) 
-            : 
-            observer_(std::move(observer)),
-            source_subscription_(std::move(source_subscription)) {
-
-        }
-
-        void Unsubscribe() override {
-            source_subscription_->Unsubscribe();
-            observer_->Unsubscribe();
-        }
-
-    private:
-        std::shared_ptr<ConcatMapObserver> observer_;
-        std::shared_ptr<Subscription> source_subscription_;
     };
 
 private:

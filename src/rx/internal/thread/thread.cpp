@@ -12,7 +12,8 @@ Thread::Thread(Work work, std::function<void(Thread*)> end) :
 
 void Thread::Run(Work work) {
     work();
-    end_(this);
+    auto end = end_;
+    end(this);
 }
 
 }
