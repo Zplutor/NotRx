@@ -23,16 +23,20 @@ public:
         return Subscription(handle_->Subscribe(observer.GetHandle()));
     }
     
-    Observable<T> SubscribeOn(const std::shared_ptr<Scheduler>& scheduler) {
-        return Observable<T>(handle_->SubscribeOn(scheduler));
+    Observable SubscribeOn(const std::shared_ptr<Scheduler>& scheduler) {
+        return Observable(handle_->SubscribeOn(scheduler));
     }
 
-    Observable<T> ObserveOn(const std::shared_ptr<Scheduler>& scheduler) {
-        return Observable<T>(handle_->ObserveOn(scheduler));
+    Observable ObserveOn(const std::shared_ptr<Scheduler>& scheduler) {
+        return Observable(handle_->ObserveOn(scheduler));
     }
 
-    Observable<T> Last() {
-        return Observable<T>(handle_->Last());
+    Observable First() {
+        return Observable(handle_->First());
+    }
+
+    Observable Last() {
+        return Observable(handle_->Last());
     }
 
     template<typename K>

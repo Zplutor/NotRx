@@ -138,6 +138,9 @@
     <ClInclude Include="src\rx\internal\subscription_container.h">
       <Filter>src\rx\internal</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\internal\operator\first_operator.h">
+      <Filter>src\rx\internal\operator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\internal\observable.cpp">

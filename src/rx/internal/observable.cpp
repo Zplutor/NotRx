@@ -1,5 +1,6 @@
 #include "rx/internal/observable.h"
 #include "rx/internal/operator/concat_map_operator.h"
+#include "rx/internal/operator/first_operator.h"
 #include "rx/internal/operator/last_operator.h"
 #include "rx/internal/operator/map_operator.h"
 #include "rx/internal/operator/observe_on_operator.h"
@@ -15,6 +16,11 @@ std::shared_ptr<Observable> Observable::SubscribeOn(const std::shared_ptr<Schedu
 
 std::shared_ptr<Observable> Observable::ObserveOn(const std::shared_ptr<Scheduler>& scheduler) {
     return std::make_shared<ObserveOnOperator>(shared_from_this(), scheduler);
+}
+
+
+std::shared_ptr<Observable> Observable::First() {
+    return std::make_shared<FirstOperator>(shared_from_this());
 }
 
 
