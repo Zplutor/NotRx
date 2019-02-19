@@ -12,7 +12,7 @@ Observable<int> Range(int start, int length, int step = 1);
 
 
 template<typename T>
-Observable<T> Create(std::function<Subscription(Observer<T> observer)> creator) {
+Observable<T> Create(std::function<Subscription(Observer<T>)> creator) {
     auto observable_handle = std::make_shared<internal::CustomizedCreator>([creator](const std::shared_ptr<internal::Observer>& observer) {
         return creator(Observer<T>(observer)).GetHandle();
     });

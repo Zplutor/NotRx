@@ -26,6 +26,7 @@
     <ClInclude Include="src\rx\internal\creator\just_creator.h" />
     <ClInclude Include="src\rx\internal\creator\merge_creator.h" />
     <ClInclude Include="src\rx\internal\creator\range_creator.h" />
+    <ClInclude Include="src\rx\internal\customized_subscription_core.h" />
     <ClInclude Include="src\rx\internal\general_observer.h" />
     <ClInclude Include="src\rx\internal\observable.h" />
     <ClInclude Include="src\rx\internal\observer.h" />

@@ -10,6 +10,7 @@ namespace internal {
 class Thread {
 public:
     Thread(Work work, std::function<void(Thread*)> end);
+    ~Thread();
 
     std::thread::id GetId() {
         return thread_.get_id();
@@ -31,8 +32,10 @@ private:
     void Run(Work work);
 
 private:
-    std::thread thread_;
+    //This field must be initialized before thread starting,
+    //so it must precede thread_. 
     std::function<void(Thread*)> end_;
+    std::thread thread_;
 };
 
 }

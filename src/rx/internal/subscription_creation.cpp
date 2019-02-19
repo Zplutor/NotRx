@@ -20,8 +20,8 @@ std::shared_ptr<Subscription> GetEmptySubscription() {
 }
 
 
-std::shared_ptr<Subscription> MakeSubscription(std::shared_ptr<SubscriptionCore> source) {
-    return std::make_shared<BaseSubscription>(std::move(source));
+std::shared_ptr<Subscription> MakeSubscription(std::shared_ptr<SubscriptionCore> core) {
+    return std::make_shared<BaseSubscription>(std::move(core));
 }
 
 }

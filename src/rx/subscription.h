@@ -1,11 +1,15 @@
 #pragma once
 
+#include <functional>
 #include <memory>
 #include "rx/internal/subscription.h"
 
 namespace rx {
 
 class Subscription {
+public:
+    static Subscription Create(std::function<void()> on_unsubscribe);
+
 public:
     Subscription();
 
@@ -15,8 +19,8 @@ public:
     Subscription(const Subscription&) = default;
     Subscription& operator=(const Subscription&) = default;
 
-    explicit Subscription(std::shared_ptr<internal::Subscription> impl) :
-        handle_(std::move(impl)) { }
+    explicit Subscription(std::shared_ptr<internal::Subscription> handle) :
+        handle_(std::move(handle)) { }
 
     void Unsubscribe() {
         handle_->Unsubscribe();
