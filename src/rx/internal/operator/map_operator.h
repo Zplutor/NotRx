@@ -15,33 +15,66 @@ public:
     }
 
     std::shared_ptr<Subscription> Subscribe(const std::shared_ptr<Observer>& observer) override {
-        return source_->Subscribe(std::make_shared<MapObserver>(observer, map_operator_));
+        auto map_observer = std::make_shared<MapObserver>(observer, map_operator_);
+        auto subscription = source_->Subscribe(map_observer);
+        map_observer->AttachSourceSubscription(subscription);
+        return subscription;
     }
 
 private:
     class MapObserver : public Observer {
     public:
-        MapObserver(const std::shared_ptr<Observer>& next_observer, std::function<std::any(const std::any&)> map_operator) :
-            next_observer_(next_observer),
-            map_operator_(map_operator) {
+        MapObserver(std::shared_ptr<Observer> next_observer, std::function<std::any(const std::any&)> map_operator) :
+            next_observer_(std::move(next_observer)),
+            map_operator_(std::move(map_operator)) {
 
+        }
+
+        void AttachSourceSubscription(std::shared_ptr<Subscription> subscription) {
+            source_subscription_ = std::move(subscription);
         }
 
         void OnNext(const std::any& value) override {
-            next_observer_->OnNext(map_operator_(value));
+
+            if (is_finished_) {
+                return;
+            }
+
+            std::any mapped_value;
+            try {
+                mapped_value = map_operator_(value);
+            }
+            catch (const Error& error) {
+
+                is_finished_ = true;
+                if (source_subscription_ != nullptr) {
+                    source_subscription_->Unsubscribe();
+                }
+
+                next_observer_->OnError(error);
+                return;
+            }
+
+            next_observer_->OnNext(mapped_value);
         }
 
         void OnError(const Error& error) override {
-            next_observer_->OnError(error);
+            if (!is_finished_) {
+                next_observer_->OnError(error);
+            }
         }
 
         void OnCompleted() override {
-            next_observer_->OnCompleted();
+            if (!is_finished_) {
+                next_observer_->OnCompleted();
+            }
         }
 
     private:
         std::shared_ptr<Observer> next_observer_;
         std::function<std::any(const std::any&)> map_operator_;
+        std::shared_ptr<Subscription> source_subscription_;
+        bool is_finished_{};
     };
 
 private:

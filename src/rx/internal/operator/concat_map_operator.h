@@ -43,7 +43,14 @@ private:
 
         void OnNext(const std::any& value) override {
 
-            auto observable = operator_(value);
+            std::shared_ptr<Observable> observable;
+            try {
+                observable = operator_(value);
+            }
+            catch (const Error& error) {
+                CheckError(error);
+                return;
+            }
 
             auto subscription_id = total_subscription_count_;
             total_subscription_count_++;
@@ -93,6 +100,7 @@ private:
         void CheckError(const Error& error) {
             if (!is_finished_) {
                 is_finished_ = true;
+                OnUnsubscribe();
                 next_observer_->OnError(error);
                 FinishSubscription();
             }
