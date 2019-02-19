@@ -152,7 +152,6 @@
     <ClCompile Include="src\rx\internal\subject.cpp">
       <Filter>src\rx\internal</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="src\rx\scheduler.cpp">
       <Filter>src\rx</Filter>
     </ClCompile>

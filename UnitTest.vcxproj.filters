@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="test">
+      <UniqueIdentifier>{7339c1d0-cf5e-4237-be46-9caf0a9088ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\googletest">
+      <UniqueIdentifier>{95a076de-b440-4d68-8aa7-94a31b64fa91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\googletest\src">
+      <UniqueIdentifier>{7c492342-89a7-40ef-a53a-f4e25c61f1e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\case">
+      <UniqueIdentifier>{db9b0f27-e454-4d53-872c-477d1c2f41ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\case\operator">
+      <UniqueIdentifier>{eb5926b0-0e07-45ff-8e82-c0ee6ea2b72b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="test\googletest\src\gtest-all.cc">
+      <Filter>test\googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="test\googletest\src\gtest_main.cc">
+      <Filter>test\googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="test\case\operator\first_test.cpp">
+      <Filter>test\case\operator</Filter>
+    </ClCompile>
+    <ClCompile Include="test\case\operator\last_test.cpp">
+      <Filter>test\case\operator</Filter>
+    </ClCompile>
+    <ClCompile Include="test\case\operator\map_test.cpp">
+      <Filter>test\case\operator</Filter>
+    </ClCompile>
+    <ClCompile Include="test\case\operator\concat_map_test.cpp">
+      <Filter>test\case\operator</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

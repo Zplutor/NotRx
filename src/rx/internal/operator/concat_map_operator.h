@@ -85,7 +85,9 @@ private:
 
     protected:
         void OnUnsubscribe() override {
-            source_subscription_->Unsubscribe();
+            if (source_subscription_ != nullptr) {
+                source_subscription_->Unsubscribe();
+            }
             for (const auto& each_pair : emitting_subscriptions_) {
                 each_pair.second->Unsubscribe();
             }

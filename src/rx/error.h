@@ -6,6 +6,8 @@ namespace rx {
 
 class Error {
 public:
+    Error() = default;
+
     Error(std::string domain, int code) : 
         domain(std::move(domain)), code(code) { }
 

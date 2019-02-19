@@ -19,86 +19,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\rx\creation.h" />
-    <ClInclude Include="src\rx\error.h" />
-    <ClInclude Include="src\rx\internal\base_subscription.h" />
-    <ClInclude Include="src\rx\internal\creator\customized_creator.h" />
-    <ClInclude Include="src\rx\internal\creator\just_creator.h" />
-    <ClInclude Include="src\rx\internal\creator\merge_creator.h" />
-    <ClInclude Include="src\rx\internal\creator\range_creator.h" />
-    <ClInclude Include="src\rx\internal\customized_subscription_core.h" />
-    <ClInclude Include="src\rx\internal\general_observer.h" />
-    <ClInclude Include="src\rx\internal\observable.h" />
-    <ClInclude Include="src\rx\internal\observer.h" />
-    <ClInclude Include="src\rx\internal\operator\concat_map_operator.h" />
-    <ClInclude Include="src\rx\internal\operator\first_operator.h" />
-    <ClInclude Include="src\rx\internal\operator\last_operator.h" />
-    <ClInclude Include="src\rx\internal\operator\map_operator.h" />
-    <ClInclude Include="src\rx\internal\operator\observe_on_operator.h" />
-    <ClInclude Include="src\rx\internal\operator\subscribe_on_operator.h" />
-    <ClInclude Include="src\rx\internal\scheduler\main_thread_scheduler.h" />
-    <ClInclude Include="src\rx\internal\scheduler\new_thread_scheduler.h" />
-    <ClInclude Include="src\rx\internal\scheduler\scheduler_manager.h" />
-    <ClInclude Include="src\rx\internal\scheduler\thread_pool_scheduler.h" />
-    <ClInclude Include="src\rx\internal\subject.h" />
-    <ClInclude Include="src\rx\internal\subscription.h" />
-    <ClInclude Include="src\rx\internal\subscription_container.h" />
-    <ClInclude Include="src\rx\internal\subscription_creation.h" />
-    <ClInclude Include="src\rx\internal\subscription_core.h" />
-    <ClInclude Include="src\rx\internal\thread\main_thread.h" />
-    <ClInclude Include="src\rx\internal\thread\general_run_loop_thread.h" />
-    <ClInclude Include="src\rx\internal\thread\thread.h" />
-    <ClInclude Include="src\rx\internal\thread\thread_manager.h" />
-    <ClInclude Include="src\rx\observable.h" />
-    <ClInclude Include="src\rx\observer.h" />
-    <ClInclude Include="src\rx\observer_functions.h" />
-    <ClInclude Include="src\rx\scheduler.h" />
-    <ClInclude Include="src\rx\subject.h" />
-    <ClInclude Include="src\rx\subscription.h" />
-    <ClInclude Include="src\rx\run_loop_thread.h" />
-    <ClInclude Include="src\rx\subscription_container.h" />
-    <ClInclude Include="src\rx\subscription_host.h" />
-    <ClInclude Include="src\rx\work.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\rx\creation.cpp" />
-    <ClCompile Include="src\rx\internal\creator\customized_creator.cpp" />
-    <ClCompile Include="src\rx\internal\creator\just_creator.cpp" />
-    <ClCompile Include="src\rx\internal\creator\merge_creator.cpp" />
-    <ClCompile Include="src\rx\internal\observable.cpp" />
-    <ClCompile Include="src\rx\internal\observer.cpp" />
-    <ClCompile Include="src\rx\internal\scheduler\main_thread_scheduler.cpp" />
-    <ClCompile Include="src\rx\internal\scheduler\new_thread_scheduler.cpp" />
-    <ClCompile Include="src\rx\internal\scheduler\scheduler_manager.cpp" />
-    <ClCompile Include="src\rx\internal\scheduler\thread_pool_scheduler.cpp" />
-    <ClCompile Include="src\rx\internal\subject.cpp" />
-    <ClCompile Include="src\rx\internal\subscription_creation.cpp" />
-    <ClCompile Include="src\rx\internal\subscription_core.cpp" />
-    <ClCompile Include="src\rx\internal\thread\main_thread.cpp" />
-    <ClCompile Include="src\rx\internal\thread\general_run_loop_thread.cpp" />
-    <ClCompile Include="src\rx\internal\thread\thread_manager.cpp" />
-    <ClCompile Include="src\rx\internal\thread\thread.cpp" />
-    <ClCompile Include="src\rx\scheduler.cpp" />
-    <ClCompile Include="src\rx\run_loop_thread.cpp" />
-    <ClCompile Include="src\rx\subscription.cpp" />
-    <ClCompile Include="src\rx\subscription_container.cpp" />
+    <ClCompile Include="test\case\operator\concat_map_test.cpp" />
+    <ClCompile Include="test\case\operator\first_test.cpp" />
+    <ClCompile Include="test\case\operator\last_test.cpp" />
+    <ClCompile Include="test\case\operator\map_test.cpp" />
+    <ClCompile Include="test\googletest\src\gtest-all.cc" />
+    <ClCompile Include="test\googletest\src\gtest_main.cc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{4844BE25-1D3A-4058-80B9-BCED420ADEF0}</ProjectGuid>
+    <ProjectGuid>{06CB3C99-9693-49C4-ADC3-4DC666AEADD7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>NotRx</RootNamespace>
+    <RootNamespace>UnitTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -137,16 +80,18 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)test\googletest\include;$(SolutionDir)test\googletest\;$(SolutionDir)src;$(IncludePath)</IncludePath>
     <IntDir>build\$(ProjectName)\$(Configuration)\</IntDir>
+    <LibraryPath>$(OutDir);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)test\googletest\include;$(SolutionDir)test\googletest\;$(SolutionDir)src;$(IncludePath)</IncludePath>
     <IntDir>build\$(ProjectName)\$(Configuration)\</IntDir>
+    <LibraryPath>$(OutDir);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -160,12 +105,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>NotRx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -194,7 +139,6 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -202,6 +146,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>NotRx.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
