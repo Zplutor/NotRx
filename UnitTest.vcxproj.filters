@@ -16,6 +16,9 @@
     <Filter Include="test\case\operator">
       <UniqueIdentifier>{eb5926b0-0e07-45ff-8e82-c0ee6ea2b72b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="test\case\creation">
+      <UniqueIdentifier>{525b950d-758f-428f-9ea5-08009cc15efc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test\googletest\src\gtest-all.cc">
@@ -35,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="test\case\operator\concat_map_test.cpp">
       <Filter>test\case\operator</Filter>
+    </ClCompile>
+    <ClCompile Include="test\case\creation\just_test.cpp">
+      <Filter>test\case\creation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
