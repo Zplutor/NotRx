@@ -27,10 +27,13 @@ public:
             return;
         }
 
-        auto finish_callback_id = core->RegisterFinishCallback(std::bind(OnNoIdSubscriptionFinish, state_, std::placeholders::_1));
+        auto register_result = core->RegisterFinishCallback(std::bind(OnNoIdSubscriptionFinish, state_, std::placeholders::_1));
+        if (!register_result.first) {
+            return;
+        }
 
         std::scoped_lock<std::mutex> lock(state_->lock);
-        state_->no_id_items.push_back({ subscription, finish_callback_id });
+        state_->no_id_items.push_back({ subscription, register_result.second });
     }
 
     void Add(const std::string& id, const std::shared_ptr<Subscription>& subscription) {
@@ -40,8 +43,12 @@ public:
             return;
         }
 
-        auto finish_callback_id = core->RegisterFinishCallback(std::bind(OnIdSubscriptionFinish, state_, std::placeholders::_1));
-        Item item{ subscription, finish_callback_id };
+        auto register_result = core->RegisterFinishCallback(std::bind(OnIdSubscriptionFinish, state_, std::placeholders::_1));
+        if (!register_result.first) {
+            return;
+        }
+
+        Item item{ subscription, register_result.second };
 
         std::scoped_lock<std::mutex> lock(state_->lock);
         auto iterator = state_->id_items.find(id);

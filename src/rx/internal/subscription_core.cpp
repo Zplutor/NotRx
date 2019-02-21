@@ -32,16 +32,16 @@ bool SubscriptionCore::SetFinish() {
 }
 
 
-int SubscriptionCore::RegisterFinishCallback(FinishCallback callback) {
+std::pair<bool, int> SubscriptionCore::RegisterFinishCallback(FinishCallback callback) {
 
     std::scoped_lock<std::mutex> lock(lock_);
     if (is_finished_) {
-        return {};
+        return std::make_pair(false, 0);
     }
 
     auto id = ++id_seed_;
     finish_callbacks_[id] = std::move(callback);
-    return id;
+    return std::make_pair(true, id);
 }
 
 

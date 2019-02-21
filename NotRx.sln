@@ -11,6 +11,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "UnitTest.vcxpro
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Playground", "Playground.vcxproj", "{06CF09FC-69BB-4D8E-BAD2-240133E66446}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4844BE25-1D3A-4058-80B9-BCED420ADEF0} = {4844BE25-1D3A-4058-80B9-BCED420ADEF0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

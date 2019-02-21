@@ -56,10 +56,18 @@ private:
             if (source_core != nullptr) {
 
                 auto weak_pointer = weak_from_this();
-                source_subscription_finish_callback_id_ = source_core->RegisterFinishCallback([weak_pointer](int) {
+                auto register_result = source_core->RegisterFinishCallback([weak_pointer](int) {
                     auto this_core = weak_pointer.lock();
                     this_core->FinishSubscription();
                 });
+
+                if (register_result.first) {
+                    source_subscription_finish_callback_id_ = register_result.second;
+                }
+                else {
+                    //Source subscription has finished, finish this subscription as well.
+                    FinishSubscription();
+                }
             }
         }
 

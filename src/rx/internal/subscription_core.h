@@ -21,7 +21,7 @@ public:
     void Unsubscribe();
     void FinishSubscription();
 
-    int RegisterFinishCallback(FinishCallback callback);
+    std::pair<bool, int> RegisterFinishCallback(FinishCallback callback);
     void UnregisterFinishCallback(int id);
 
 protected:
