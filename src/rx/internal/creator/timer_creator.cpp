@@ -22,10 +22,10 @@ public:
 
     void Subscribe(std::chrono::steady_clock::duration delay) {
 
-        next_time_point_ = std::chrono::steady_clock::now() + delay;
+        auto next_time_point = std::chrono::steady_clock::now() + delay;
 
         auto& timer_manager = SchedulerManager::Instance().GetTimerManager();
-        timer_id_ = timer_manager.SetTimer(next_time_point_, scheduler_, std::bind(&TimerSubscriptionCore::OnTimer, this));
+        timer_id_ = timer_manager.SetTimer(next_time_point, scheduler_, std::bind(&TimerSubscriptionCore::OnTimer, this));
     }
 
     void OnUnsubscribe() override {
@@ -40,10 +40,10 @@ private:
 
         if (interval_) {
 
-            next_time_point_ += *interval_;
+            auto next_time_point = std::chrono::steady_clock::now() + *interval_;
 
             auto& timer_manager = SchedulerManager::Instance().GetTimerManager();
-            timer_id_ = timer_manager.SetTimer(next_time_point_, scheduler_, std::bind(&TimerSubscriptionCore::OnTimer, this));
+            timer_id_ = timer_manager.SetTimer(next_time_point, scheduler_, std::bind(&TimerSubscriptionCore::OnTimer, this));
         }
         else {
             observer_->OnCompleted();
@@ -57,7 +57,6 @@ private:
     std::shared_ptr<Observer> observer_;
     int value_{};
     int timer_id_{};
-    std::chrono::steady_clock::time_point next_time_point_;
 };
 
 }
