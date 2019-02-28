@@ -91,6 +91,14 @@ int main() {
 
     rx::SubscriptionConatiner subscriptions;
 
+    auto pre_time = std::chrono::steady_clock::now();
+
+    subscriptions += rx::Interval(std::chrono::milliseconds(100)).Subscribe([&pre_time](int v) {
+        auto current = std::chrono::steady_clock::now();
+        std::cout << "Timer " << v << " after " << std::chrono::duration_cast<std::chrono::milliseconds>(current - pre_time).count() << "ms" << std::endl;
+        pre_time = current;
+    });
+
     auto task = std::make_shared<StringTask>();
     subscriptions += DispatchTask(task)
         .ObserveOn(rx::Scheduler::MainThread())

@@ -144,6 +144,15 @@
     <ClInclude Include="src\rx\internal\customized_subscription_core.h">
       <Filter>src\rx\internal</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\internal\scheduler\timer_manager.h">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\scheduler\timer_scheduler.h">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\creator\timer_creator.h">
+      <Filter>src\rx\internal\creator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\internal\observable.cpp">
@@ -208,6 +217,15 @@
     </ClCompile>
     <ClCompile Include="src\rx\subscription_container.cpp">
       <Filter>src\rx</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\scheduler\timer_manager.cpp">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\scheduler\timer_scheduler.cpp">
+      <Filter>src\rx\internal\scheduler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\creator\timer_creator.cpp">
+      <Filter>src\rx\internal\creator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

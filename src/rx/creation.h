@@ -1,5 +1,6 @@
 #pragma once
 
+#include <chrono>
 #include "rx/observable.h"
 #include "rx/observer.h"
 #include "rx/internal/creator/customized_creator.h"
@@ -9,6 +10,15 @@
 namespace rx {
 
 Observable<int> Range(int start, int length, int step = 1);
+
+Observable<int> Timer(std::chrono::steady_clock::duration delay);
+Observable<int> Timer(std::chrono::steady_clock::duration delay, std::shared_ptr<Scheduler> scheduler);
+
+Observable<int> Timer(std::chrono::steady_clock::duration delay, std::chrono::steady_clock::duration interval);
+Observable<int> Timer(std::chrono::steady_clock::duration delay, std::chrono::steady_clock::duration interval, std::shared_ptr<Scheduler> scheduler);
+
+Observable<int> Interval(std::chrono::steady_clock::duration interval);
+Observable<int> Interval(std::chrono::steady_clock::duration interval, std::shared_ptr<Scheduler> scheduler);
 
 
 template<typename T>

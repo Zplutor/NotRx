@@ -27,7 +27,7 @@ public:
             return;
         }
 
-        auto register_result = core->RegisterFinishCallback(std::bind(OnNoIdSubscriptionFinish, state_, std::placeholders::_1));
+        auto register_result = core->RegisterFinishCallback(std::bind(OnNoIdSubscriptionFinish, state_, subscription, std::placeholders::_1));
         if (!register_result.first) {
             return;
         }
@@ -43,7 +43,7 @@ public:
             return;
         }
 
-        auto register_result = core->RegisterFinishCallback(std::bind(OnIdSubscriptionFinish, state_, std::placeholders::_1));
+        auto register_result = core->RegisterFinishCallback(std::bind(OnIdSubscriptionFinish, state_, subscription, std::placeholders::_1));
         if (!register_result.first) {
             return;
         }
@@ -107,14 +107,17 @@ private:
         item.subscription->GetCore()->UnregisterFinishCallback(item.finish_callback_id);
     }
 
-    static void OnNoIdSubscriptionFinish(const std::shared_ptr<State>& state, int callback_id) {
+    static void OnNoIdSubscriptionFinish(
+        const std::shared_ptr<State>& state, 
+        const std::shared_ptr<Subscription>& subscription,
+        int callback_id) {
 
         std::scoped_lock<std::mutex> lock(state->lock);
 
         auto iterator = state->no_id_items.begin();
         while (iterator != state->no_id_items.end()) {
 
-            if (iterator->finish_callback_id = callback_id) {
+            if ((iterator->subscription == subscription) && (iterator->finish_callback_id = callback_id)) {
                 iterator = state->no_id_items.erase(iterator);
             }
             else {
@@ -123,14 +126,17 @@ private:
         }
     }
 
-    static void OnIdSubscriptionFinish(const std::shared_ptr<State>& state, int callback_id) {
+    static void OnIdSubscriptionFinish(
+        const std::shared_ptr<State>& state,
+        const std::shared_ptr<Subscription>& subscription, 
+        int callback_id) {
 
         std::scoped_lock<std::mutex> lock(state->lock);
 
         auto iterator = state->id_items.begin();
         while (iterator != state->id_items.end()) {
 
-            if (iterator->second.finish_callback_id == callback_id) {
+            if ((iterator->second.subscription == subscription) && (iterator->second.finish_callback_id = callback_id)) {
                 iterator = state->id_items.erase(iterator);
             }
             else {

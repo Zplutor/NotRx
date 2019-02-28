@@ -2,6 +2,7 @@
 #include "rx/internal/scheduler/new_thread_scheduler.h"
 #include "rx/internal/scheduler/main_thread_scheduler.h"
 #include "rx/internal/scheduler/thread_pool_scheduler.h"
+#include "rx/internal/scheduler/timer_scheduler.h"
 
 namespace rx {
 namespace internal {
@@ -9,6 +10,16 @@ namespace internal {
 SchedulerManager& SchedulerManager::Instance() {
     static SchedulerManager instance;
     return instance;
+}
+
+
+TimerManager& SchedulerManager::GetTimerManager() {
+
+    std::call_once(timer_manager_once_flag_, [this]() {
+        timer_manager_ = std::make_unique<TimerManager>(GetThreadManager());
+    });
+
+    return *timer_manager_;
 }
 
 
@@ -39,6 +50,16 @@ std::shared_ptr<Scheduler> SchedulerManager::GetThreadPoolScheduler() {
     });
 
     return new_thread_scheduler_;
+}
+
+
+std::shared_ptr<Scheduler> SchedulerManager::GetTimerScheduler() {
+
+    std::call_once(timer_scheduler_once_flag_, [this]() {
+        timer_scheduler_ = std::make_shared<TimerScheduler>(thread_manager_);
+    });
+
+    return timer_scheduler_;
 }
 
 }

@@ -26,6 +26,7 @@
     <ClInclude Include="src\rx\internal\creator\just_creator.h" />
     <ClInclude Include="src\rx\internal\creator\merge_creator.h" />
     <ClInclude Include="src\rx\internal\creator\range_creator.h" />
+    <ClInclude Include="src\rx\internal\creator\timer_creator.h" />
     <ClInclude Include="src\rx\internal\customized_subscription_core.h" />
     <ClInclude Include="src\rx\internal\general_observer.h" />
     <ClInclude Include="src\rx\internal\observable.h" />
@@ -40,6 +41,8 @@
     <ClInclude Include="src\rx\internal\scheduler\new_thread_scheduler.h" />
     <ClInclude Include="src\rx\internal\scheduler\scheduler_manager.h" />
     <ClInclude Include="src\rx\internal\scheduler\thread_pool_scheduler.h" />
+    <ClInclude Include="src\rx\internal\scheduler\timer_manager.h" />
+    <ClInclude Include="src\rx\internal\scheduler\timer_scheduler.h" />
     <ClInclude Include="src\rx\internal\subject.h" />
     <ClInclude Include="src\rx\internal\subscription.h" />
     <ClInclude Include="src\rx\internal\subscription_container.h" />
@@ -65,12 +68,15 @@
     <ClCompile Include="src\rx\internal\creator\customized_creator.cpp" />
     <ClCompile Include="src\rx\internal\creator\just_creator.cpp" />
     <ClCompile Include="src\rx\internal\creator\merge_creator.cpp" />
+    <ClCompile Include="src\rx\internal\creator\timer_creator.cpp" />
     <ClCompile Include="src\rx\internal\observable.cpp" />
     <ClCompile Include="src\rx\internal\observer.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\main_thread_scheduler.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\new_thread_scheduler.cpp" />
+    <ClCompile Include="src\rx\internal\scheduler\timer_scheduler.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\scheduler_manager.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\thread_pool_scheduler.cpp" />
+    <ClCompile Include="src\rx\internal\scheduler\timer_manager.cpp" />
     <ClCompile Include="src\rx\internal\subject.cpp" />
     <ClCompile Include="src\rx\internal\subscription_creation.cpp" />
     <ClCompile Include="src\rx\internal\subscription_core.cpp" />
