@@ -43,7 +43,10 @@
     <ClInclude Include="src\rx\internal\scheduler\thread_pool_scheduler.h" />
     <ClInclude Include="src\rx\internal\scheduler\timer_manager.h" />
     <ClInclude Include="src\rx\internal\scheduler\timer_scheduler.h" />
-    <ClInclude Include="src\rx\internal\subject.h" />
+    <ClInclude Include="src\rx\internal\subject\replay_subject.h" />
+    <ClInclude Include="src\rx\internal\subject\replay_subject_core.h" />
+    <ClInclude Include="src\rx\internal\subject\subject.h" />
+    <ClInclude Include="src\rx\internal\subject\subject_core.h" />
     <ClInclude Include="src\rx\internal\subscription.h" />
     <ClInclude Include="src\rx\internal\subscription_container.h" />
     <ClInclude Include="src\rx\internal\subscription_creation.h" />
@@ -77,7 +80,10 @@
     <ClCompile Include="src\rx\internal\scheduler\scheduler_manager.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\thread_pool_scheduler.cpp" />
     <ClCompile Include="src\rx\internal\scheduler\timer_manager.cpp" />
-    <ClCompile Include="src\rx\internal\subject.cpp" />
+    <ClCompile Include="src\rx\internal\subject\replay_subject.cpp" />
+    <ClCompile Include="src\rx\internal\subject\replay_subject_core.cpp" />
+    <ClCompile Include="src\rx\internal\subject\subject.cpp" />
+    <ClCompile Include="src\rx\internal\subject\subject_core.cpp" />
     <ClCompile Include="src\rx\internal\subscription_creation.cpp" />
     <ClCompile Include="src\rx\internal\subscription_core.cpp" />
     <ClCompile Include="src\rx\internal\thread\main_thread.cpp" />

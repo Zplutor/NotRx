@@ -1,26 +1,36 @@
 #pragma once
 
-#include "rx/internal/subject.h"
+#include "rx/internal/subject/replay_subject.h"
+#include "rx/internal/subject/subject.h"
 #include "rx/observable.h"
 #include "rx/observer.h"
 
 namespace rx {
+namespace internal {
 
-template<typename T>
-class Subject {
+template<typename T, typename S>
+class SubjectTemplate {
 public:
-    Subject() : impl_(internal::Subject::Create()) { }
+    SubjectTemplate() : handle_(std::make_shared<S>()) { }
 
-    Observable<T> GetObservable() const {
-        return Observable<T>(impl_->GetObservable());
+    rx::Observable<T> GetObservable() const {
+        return rx::Observable<T>(handle_->GetObservable());
     }
 
-    Observer<T> GetObserver() const {
-        return Observer<T>(impl_->GetObserver());
+    rx::Observer<T> GetObserver() const {
+        return rx::Observer<T>(handle_->GetObserver());
     }
 
 private:
-    std::shared_ptr<internal::Subject> impl_;
+    std::shared_ptr<S> handle_;
 };
+
+}
+
+template<typename T>
+using Subject = internal::SubjectTemplate<T, internal::Subject>;
+
+template<typename T>
+using ReplaySubject = internal::SubjectTemplate<T, internal::ReplaySubject>;
 
 }

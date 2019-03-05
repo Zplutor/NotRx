@@ -22,6 +22,9 @@
     <Filter Include="src\rx\internal\creator">
       <UniqueIdentifier>{436ff087-c8b6-490d-9e1b-c277818feadf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\rx\internal\subject">
+      <UniqueIdentifier>{3f113eb9-7710-459f-b85a-2f1367fa1ea1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\rx\error.h">
@@ -49,9 +52,6 @@
       <Filter>src\rx\internal</Filter>
     </ClInclude>
     <ClInclude Include="src\rx\internal\observer.h">
-      <Filter>src\rx\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\rx\internal\subject.h">
       <Filter>src\rx\internal</Filter>
     </ClInclude>
     <ClInclude Include="src\rx\internal\subscription.h">
@@ -153,12 +153,21 @@
     <ClInclude Include="src\rx\internal\creator\timer_creator.h">
       <Filter>src\rx\internal\creator</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\internal\subject\replay_subject.h">
+      <Filter>src\rx\internal\subject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\subject\subject.h">
+      <Filter>src\rx\internal\subject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\subject\subject_core.h">
+      <Filter>src\rx\internal\subject</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rx\internal\subject\replay_subject_core.h">
+      <Filter>src\rx\internal\subject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\internal\observable.cpp">
-      <Filter>src\rx\internal</Filter>
-    </ClCompile>
-    <ClCompile Include="src\rx\internal\subject.cpp">
       <Filter>src\rx\internal</Filter>
     </ClCompile>
     <ClCompile Include="src\rx\scheduler.cpp">
@@ -226,6 +235,18 @@
     </ClCompile>
     <ClCompile Include="src\rx\internal\creator\timer_creator.cpp">
       <Filter>src\rx\internal\creator</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\subject\subject.cpp">
+      <Filter>src\rx\internal\subject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\subject\subject_core.cpp">
+      <Filter>src\rx\internal\subject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\subject\replay_subject_core.cpp">
+      <Filter>src\rx\internal\subject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rx\internal\subject\replay_subject.cpp">
+      <Filter>src\rx\internal\subject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
