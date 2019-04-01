@@ -65,6 +65,10 @@ public:
         }));
     }
 
+    Observable Replay() {
+        return Observable(handle_->Replay());
+    }
+
     const std::shared_ptr<internal::Observable>& GetHandle() const {
         return handle_;
     }

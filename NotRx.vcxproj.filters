@@ -165,6 +165,9 @@
     <ClInclude Include="src\rx\internal\subject\replay_subject_core.h">
       <Filter>src\rx\internal\subject</Filter>
     </ClInclude>
+    <ClInclude Include="src\rx\internal\operator\replay_operator.h">
+      <Filter>src\rx\internal\operator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\rx\internal\observable.cpp">

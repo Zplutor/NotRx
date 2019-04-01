@@ -24,6 +24,7 @@
     <ClCompile Include="test\case\operator\first_test.cpp" />
     <ClCompile Include="test\case\operator\last_test.cpp" />
     <ClCompile Include="test\case\operator\map_test.cpp" />
+    <ClCompile Include="test\case\operator\replay_test.cpp" />
     <ClCompile Include="test\googletest\src\gtest-all.cc" />
     <ClCompile Include="test\googletest\src\gtest_main.cc" />
   </ItemGroup>

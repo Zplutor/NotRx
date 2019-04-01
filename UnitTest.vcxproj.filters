@@ -42,5 +42,8 @@
     <ClCompile Include="test\case\creation\just_test.cpp">
       <Filter>test\case\creation</Filter>
     </ClCompile>
+    <ClCompile Include="test\case\operator\replay_test.cpp">
+      <Filter>test\case\operator</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

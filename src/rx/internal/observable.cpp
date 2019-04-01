@@ -4,6 +4,7 @@
 #include "rx/internal/operator/last_operator.h"
 #include "rx/internal/operator/map_operator.h"
 #include "rx/internal/operator/observe_on_operator.h"
+#include "rx/internal/operator/replay_operator.h"
 #include "rx/internal/operator/subscribe_on_operator.h"
 
 namespace rx {
@@ -36,6 +37,11 @@ std::shared_ptr<Observable> Observable::Map(std::function<std::any(const std::an
 
 std::shared_ptr<Observable> Observable::ConcatMap(std::function<std::shared_ptr<Observable>(const std::any&)> concat_map_operator) {
     return std::make_shared<ConcatMapOperator>(shared_from_this(), concat_map_operator);
+}
+
+
+std::shared_ptr<Observable> Observable::Replay() {
+    return std::make_shared<ReplayOperator>(shared_from_this());
 }
 
 }
